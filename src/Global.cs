@@ -62,5 +62,6 @@ namespace Maquina
         public static InputManager InputManager { get; set; }
         public static LocaleManager LocaleManager { get; set; }
         public static PreferencesManager PreferencesManager { get; set; }
+        public static WindowManager WindowManager { get; set; }
     }
 }

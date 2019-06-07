@@ -24,6 +24,7 @@ namespace Maquina
         protected InputManager InputManager;
         protected PreferencesManager PreferencesManager;
         protected AudioManager AudioManager;
+        protected WindowManager WindowManager;
 
         protected int LastWindowWidth;
         protected int LastWindowHeight;
@@ -51,12 +52,14 @@ namespace Maquina
             InputManager = new InputManager();
             AudioManager = new AudioManager();
             SceneManager = new SceneManager();
+            WindowManager = new WindowManager();
 
             Global.PreferencesManager = PreferencesManager;
             Global.LocaleManager = LocaleManager;
             Global.InputManager = InputManager;
             Global.AudioManager = AudioManager;
             Global.SceneManager = SceneManager;
+            Global.WindowManager = WindowManager;
 
             // Window
             IsMouseVisible = PreferencesManager.GetBoolPref("app.window.useNativeCursor", false);
@@ -155,6 +158,7 @@ namespace Maquina
         {
             InputManager.UpdateInput();
             SceneManager.Update(gameTime);
+            WindowManager.Update(gameTime);
             TimerManager.Update(gameTime);
             SoftwareMouse.Update(gameTime);
 
@@ -168,6 +172,7 @@ namespace Maquina
         protected override void Draw(GameTime gameTime)
         {
             SceneManager.Draw(gameTime);
+            WindowManager.Draw(gameTime);
             SoftwareMouse.Draw(gameTime);
             base.Draw(gameTime);
         }
