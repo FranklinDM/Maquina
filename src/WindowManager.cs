@@ -47,7 +47,7 @@ namespace Maquina
         {
             for (int i = Windows.Count - 1; i >= 0; i--)
             {
-                Windows[Windows.Keys.ToList()[i]].Draw(gameTime);
+                Windows[Windows.Keys.ElementAt(i)].Draw(gameTime);
             }
         }
 
@@ -55,8 +55,7 @@ namespace Maquina
         {
             for (int i = Windows.Count - 1; i >= 0; i--)
             {
-                Window win = Windows[Windows.Keys.ToList()[i]];
-                win.Update(gameTime);
+                Windows[Windows.Keys.ElementAt(i)].Update(gameTime);
             }
         }
 
