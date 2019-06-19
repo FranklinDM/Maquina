@@ -1,13 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Maquina.UI
 {
-    [Serializable]
     public struct WindowStyle
     {
         private Color backgroundColor;
@@ -35,11 +35,13 @@ namespace Maquina.UI
             set { borderWidth = value; }
         }
 
-        private static WindowStyle Default
+        public static WindowStyle Default
         {
             get
             {
-                return new WindowStyle(Color.DarkSlateGray, Color.Black, Color.White, 2);
+                Color background = Color.FromNonPremultiplied(128, 128, 128, 255);
+                Color border = Color.FromNonPremultiplied(89, 89, 89, 255);
+                return new WindowStyle(background, border, Color.White, 2);
             }
         }
 
@@ -61,7 +63,7 @@ namespace Maquina.UI
 
         public override string ToString()
         {
-            return string.Format("{{BackgroundColor:{0} BorderColor:{1} FontColor:{2} BorderWidth:{3}}}",
+            return string.Format(CultureInfo.CurrentCulture, "{{BackgroundColor:{0} BorderColor:{1} FontColor:{2} BorderWidth:{3}}}",
                 BackgroundColor.ToString(), BorderColor.ToString(),
                 FontColor.ToString(), BorderWidth.ToString());
         }
